@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration
+class CreateWagersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('wagers', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->rememberToken();
+            $table->unsignedBigInteger('stage_id');
+            $table->foreign('stage_id')->references('id')->on('stages')->onDelete('cascade');
+            $table->string('value');
+            $table->boolean('active')->default(0);
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('wagers');
     }
 }
