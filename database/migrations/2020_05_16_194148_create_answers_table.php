@@ -19,12 +19,11 @@ class CreateAnswersTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->unsignedBigInteger('stage_id');
             $table->foreign('stage_id')->references('id')->on('stages');
-            $table->unsignedBigInteger('round_id');
-            $table->foreign('round_id')->references('id')->on('rounds');
+            $table->integer('round');
             $table->unsignedBigInteger('question_id');
             $table->foreign('question_id')->references('id')->on('questions');
             $table->text('answer');
-            $table->string('wager');
+            $table->integer('wager');
             $table->boolean('correct')->default(0);
             $table->timestamps();
         });

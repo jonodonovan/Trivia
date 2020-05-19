@@ -47,7 +47,7 @@ class AnswerController extends Controller
         $answer = new Answer;
         $answer->user_id = Auth::user()->id;
         $answer->stage_id = $request->stage;
-        $answer->round_id = $request->round;
+        $answer->round = $request->round;
         $answer->question_id = $request->question;
         $answer->answer = $request->answer;
         $answer->wager = $request->wager;

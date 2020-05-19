@@ -17,7 +17,7 @@ class CreateWagersTable extends Migration
             $table->id();
             $table->unsignedBigInteger('stage_id');
             $table->foreign('stage_id')->references('id')->on('stages')->onDelete('cascade');
-            $table->string('value');
+            $table->integer('value');
             $table->boolean('active')->default(0);
             $table->timestamps();
         });
