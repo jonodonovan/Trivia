@@ -39,8 +39,13 @@ class InitialGameSeeder extends Seeder
             'active' => '1',
         ]);
 
+        DB::table('categories')->insert([
+            'name' => 'Technology',
+        ]);
+
         DB::table('questions')->insert([
-            'text' => 'what\'s the meaning of life',
+            'category_id' => '1',
+            'text' => 'What\'s the meaning of life?',
             'answer' => 'the condition that distinguishes animals and plants from inorganic matter, including the capacity for growth, reproduction, functional activity, and continual change preceding death or 42',
             'active' => '0',
         ]);

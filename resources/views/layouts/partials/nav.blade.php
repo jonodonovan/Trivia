@@ -1,6 +1,12 @@
 <nav class="navbar navbar-expand-md navbar-dark shadow-sm">
     <div class="container">
-        <a class="navbar-brand" href="{{ url('/') }}">
+        <a class="navbar-brand" href="
+        @guest
+            {{ url('/') }}">
+        @else
+            {{ url('/home') }}">
+        @endguest
+
             {{ config('app.name', 'Laravel') }}
         </a>
 
