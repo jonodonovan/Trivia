@@ -44,5 +44,11 @@ class InitialGameSeeder extends Seeder
             'answer' => 'the condition that distinguishes animals and plants from inorganic matter, including the capacity for growth, reproduction, functional activity, and continual change preceding death or 42',
             'active' => '0',
         ]);
+
+        DB::table('games')->insert([
+            'name' => 'Game Night',
+            'code' => 'gamenight123',
+            'active' => '1',
+        ]);
     }
 }

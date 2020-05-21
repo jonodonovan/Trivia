@@ -1,22 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="flex-center position-ref full-height">
-    @if (Route::has('login'))
-        <div class="top-right links">
-            @auth
-                <a href="{{ url('/home') }}">Home</a>
-            @else
-                @if (Route::has('register'))
-                    <a href="{{ route('register') }}">Register</a>
-                @endif
-            @endauth
-        </div>
-    @endif
-
-    <div class="content">
-        <div class="title m-b-md">
-            Trivia
+<div class="container">
+    <div class="row">
+        <div class="offset-md-1 col-md-10 text-center">
+            <h1 style="font-size: 6rem;">Trivia Game</h1>
+            <a href="{{ route('register') }}" class="btn btn-primary btn-lg" role="button" aria-pressed="true">{{ __('Join a Game') }}</a>
         </div>
     </div>
 </div>

@@ -35,7 +35,7 @@
 
                             @if ($question)
 
-                                <h2>{{ $question->text }}</h2>
+                                <h1 style="margin-bottom:40px;">{{ $question->text }}</h1>
 
                                 <form method="POST" action="{{ route('answer.store') }}">
                                     @csrf
@@ -61,7 +61,7 @@
                                     <div class="form-group row">
                                         <div class="col-md-3">
                                             <select class="form-control{{ $errors->has('wager') ? ' is-invalid' : '' }}" id="wager" name="wager">
-                                                <option value="">Select Wager</option>
+                                                <option value="">Your wager</option>
 
                                                 @foreach ($wagers as $wager)
 
