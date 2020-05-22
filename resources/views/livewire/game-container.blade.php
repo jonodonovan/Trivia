@@ -38,11 +38,20 @@
 
                                 <h1 style="margin-bottom:40px;">{{ $question->text }}</h1>
 
+                                @if ($question->src)
+
+                                    <div style="margin-bottom:20px;">
+                                        <img src="{{ $question->src }}" class="img-fluid" alt="{{ $question->text }}">
+                                    </div>
+
+                                @endif
+
                                 <form method="POST" action="{{ route('answer.store') }}">
                                     @csrf
                                     <input type="hidden" name="stage" value="{{ $stage->id }}">
                                     <input type="hidden" name="round" value="{{ $round->count }}">
                                     <input type="hidden" name="question" value="{{ $question->id }}">
+                                    <input type="hidden" name="type" value="{{ $question->type }}">
 
                                     <div class="form-group row">
                                         <div class="col-md-12">
@@ -58,6 +67,8 @@
 
                                         </div>
                                     </div>
+
+                                    @if ($question->type == 1)
 
                                     <div class="form-group row">
                                         <div class="col-md-12">
@@ -86,6 +97,26 @@
 
                                         </div>
                                     </div>
+
+                                    @elseif ($question->type == 2)
+
+                                    @else
+
+                                    <div class="form-group row">
+                                        <div class="col-md-12">
+                                            <label for="wager">Your wager (0-15)</label>
+                                            <input type="text" class="form-control{{ $errors->has('wager') ? ' is-invalid' : '' }}" name="wager" id="wager" value="{{ old('wager') }}" placeholder="0-15" required>
+
+                                            @if ($errors->has('wager'))
+                                                <span class="invalid-feedback">
+                                                    <strong>{{ $errors->first('wager') }}</strong>
+                                                </span>
+                                            @endif
+
+                                        </div>
+                                    </div>
+
+                                    @endif
 
                                     <div class="form-group row">
                                         <div class="col-md-12">

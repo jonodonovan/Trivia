@@ -20,6 +20,8 @@ class CreateQuestionsTable extends Migration
             $table->string('text');
             $table->string('answer');
             $table->boolean('active')->default(0);
+            $table->tinyInteger('type')->default(1);
+            $table->string('src')->nullable();
             $table->timestamps();
         });
     }
