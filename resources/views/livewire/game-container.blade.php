@@ -19,7 +19,7 @@
                 </div>
                 <div class="card-body">
                     <div class="row text-center" style="margin:30px 0px 5px;">
-                        <div class="col-md-12">
+                        <div class="col-md-12" style="padding:0px;">
 
                         @if (!$question)
 
