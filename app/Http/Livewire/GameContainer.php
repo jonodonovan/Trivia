@@ -40,7 +40,7 @@ class GameContainer extends Component
             };
         }
 
-        $stage = Stage::where('active', '=', TRUE)->find(1);
+        $stage = Stage::where('active', '=', TRUE)->first();
         $wagers = Wager::where('active', '=', TRUE)->get();
         $teams = User::get();
 
