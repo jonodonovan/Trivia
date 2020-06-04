@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Answer;
+use App\Question;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -21,7 +22,25 @@ class AnswerController extends Controller
                 'wager' => 'required',
             ));
 
+            $currentQuestion = Question::where('active', '=', TRUE)->first();
+            $checkAnswers = Answer::where('question_id', '=', $currentQuestion->id)->count();
+
             $answer = new Answer;
+
+            switch ($checkAnswers) {
+                case 0:
+                    $answer->bonus = 5;
+                break;
+                case 1:
+                    $answer->bonus = 3;
+                break;
+                case 2:
+                    $answer->bonus = 1;
+                break;
+                default:
+                    $answer->bonus = 0;
+            }
+
             $answer->user_id = Auth::user()->id;
             $answer->stage_id = $request->stage;
             $answer->round = $request->round;

@@ -20,7 +20,11 @@ class GameContainer extends Component
         $allAnsweredQuestions = NULL;
         $playerScore = 0;
 
-        $round = Round::where('active', '=', TRUE)->first();
+        if ($currentQuestion) {
+            $round = Round::where('id', '=', $currentQuestion->round_id)->first();
+        } else {
+            $round = Round::where('active', '=', TRUE)->first();
+        }
 
         if ($currentQuestion) {
             $answeredCurrentQuestion = Answer::where('user_id', '=', Auth::user()->id)
@@ -45,7 +49,7 @@ class GameContainer extends Component
         $teams = User::get();
 
         $teams = $teams->sortByDesc(function ($team) {
-            return $team->answers->where('correct', TRUE)->sum('wager');
+            return $team->answers->where('correct', TRUE)->sum('wager') + $team->answers->where('correct', TRUE)->sum('bonus');
         });
 
         return view('livewire.game-container')

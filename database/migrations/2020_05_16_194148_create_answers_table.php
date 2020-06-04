@@ -24,6 +24,7 @@ class CreateAnswersTable extends Migration
             $table->foreign('question_id')->references('id')->on('questions');
             $table->text('answer');
             $table->integer('wager');
+            $table->integer('bonus')->nullable();
             $table->boolean('correct')->default(0);
             $table->timestamps();
         });

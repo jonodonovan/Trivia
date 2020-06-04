@@ -4,7 +4,7 @@
             <div class="card">
                 <div class="card-header">
                     <span class="float-left">
-                        Your Score: {{ $playerScore }}
+                        Your Score: {{ number_format($playerScore) }}
                     </span>
                     <span class="float-right">
 
@@ -157,17 +157,38 @@
 
                         @if ($team->answers->contains('question_id', $question->id))
 
-                        <h4><span class="badge badge-success" style="padding:10px;">{{ $team->name }} <span class="badge badge-light">{{ $team->answers->where('correct', TRUE)->sum('wager') }}</span></span></h4>
+                        <h4>
+                            <span class="badge badge-success" style="padding:10px;">
+                                {{ $team->name }}
+                                <span class="badge badge-light">
+                                    {{ number_format($team->answers->where('correct', TRUE)->sum('wager') + $team->answers->where('correct', TRUE)->sum('bonus')) }}
+                                </span>
+                            </span>
+                        </h4>
 
                         @else
 
-                        <h4><span class="badge badge-warning" style="padding:10px;">{{ $team->name }} <span class="badge badge-light">{{ $team->answers->where('correct', TRUE)->sum('wager') }}</span></span></h4>
+                        <h4>
+                            <span class="badge badge-warning" style="padding:10px;">
+                                {{ $team->name }}
+                                <span class="badge badge-light">
+                                    {{ number_format($team->answers->where('correct', TRUE)->sum('wager') + $team->answers->where('correct', TRUE)->sum('bonus')) }}
+                                </span>
+                            </span>
+                        </h4>
 
                         @endif
 
                     @else
 
-                    <h4><span class="badge badge-warning" style="padding:10px;">{{ $team->name }} <span class="badge badge-light">{{ $team->answers->where('correct', TRUE)->sum('wager') }}</span></span></h4>
+                    <h4>
+                        <span class="badge badge-warning" style="padding:10px;">
+                            {{ $team->name }}
+                            <span class="badge badge-light">
+                                {{ number_format($team->answers->where('correct', TRUE)->sum('wager') + $team->answers->where('correct', TRUE)->sum('bonus')) }}
+                            </span>
+                        </span>
+                    </h4>
 
                     @endif
 
