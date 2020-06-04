@@ -10,4 +10,9 @@ class Round extends Model
     {
         return $this->hasMany('App\Question');
     }
+
+    public function categories()
+    {
+        return $this->hasMany('App\Category');
+    }
 }

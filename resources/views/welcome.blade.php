@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="offset-md-1 col-md-10 text-center">
-            <h1 style="font-size: 6rem;">Trivia Game</h1>
+<div class="container h-100">
+    <div class="row align-items-center h-50">
+        <div class="col-10 mx-auto">
+            <h1 style="color:white;font-size:6rem;">Trivia</h1>
             <a href="{{ route('register') }}" class="btn btn-primary btn-lg" role="button" aria-pressed="true">{{ __('Join a Game') }}</a>
         </div>
     </div>

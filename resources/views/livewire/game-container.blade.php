@@ -1,8 +1,8 @@
 <div class="container" wire:poll>
     <div class="row">
         <div class="col-sm-12 col-lg-9" style="margin-top:30px;">
-            <div class="card">
-                <div class="card-header">
+            <div class="card" style="background-color:transparent;">
+                <div class="card-header" style="color:#000;background:rgba(255, 255, 255, .6)">
                     <span class="float-left">
                         Your Score: {{ number_format($playerScore) }}
                     </span>
@@ -17,20 +17,20 @@
 
                     </span>
                 </div>
-                <div class="card-body">
+                <div class="card-body" style="background: #ffffff;">
                     <div class="row text-center" style="margin:30px 0px 5px;">
                         <div class="col-md-12" style="padding:0px;">
 
                         @if (!$question)
 
-                        <h3 class="loading">You're in the waiting room</h3>
+                            <h3 class="loading">You're in the waiting room</h3>
 
                         @endif
 
                         @if ($answeredCurrentQuestion)
 
-                        <h3><span class="badge badge-success">Question {{ $question->id }} answered!</h3>
-                        <div class="loading">Waiting for other teams to answer</div>
+                            <h3><span class="badge badge-success">Question {{ $question->id }} answered!</h3>
+                            <div class="loading">Waiting for other teams to answer</div>
 
                         @else
 
@@ -133,6 +133,17 @@
                                             <path d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z"/>
                                             <circle cx="8" cy="4.5" r="1"/>
                                           </svg> You can only use one wager option per round. Each round is three questions.</i>
+                                          <p>
+                                              <i>Categories in this round:
+
+                                            @foreach ($round->categories as $category)
+
+                                                {{ $loop->first ? '' : ' | ' }}
+                                                {{ $category->name }}
+
+                                            @endforeach
+
+                                        </i></p>
                                     </div>
                                 </div>
 
@@ -147,9 +158,23 @@
         </div>
 
         <div class="col-sm-12 col-lg-3" style="margin-top:30px;">
-            <div class="card">
-                <div class="card-header">Teams</div>
-                <div class="card-body">
+            <div class="card" style="background-color: transparent;">
+                <div class="card-header" style="background: rgba(255, 255, 255, .6)">
+                    <p style="color: #000;margin-bottom:0px;">Teams / Score
+                        <span class="float-right">
+                            <a href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();" style="color:black;text-decoration:underline;">
+                                <i>{{ __('logout') }}</i>
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </span>
+                    </p>
+                </div>
+                <div class="card-body" style="background-color: #ffffff;">
 
                 @foreach ($teams as $team)
 

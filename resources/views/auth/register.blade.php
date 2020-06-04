@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+<div class="container h-100">
+    <div class="row align-items-center h-50">
+        <div class="col-10 mx-auto">
             <div class="card">
                 <div class="card-header">{{ __('Join a Game') }}</div>
 
