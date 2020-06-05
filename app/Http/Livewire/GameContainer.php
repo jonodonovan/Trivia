@@ -44,7 +44,6 @@ class GameContainer extends Component
             };
         }
 
-        $stage = Stage::where('active', '=', TRUE)->first();
         $wagers = Wager::where('active', '=', TRUE)->get();
         $teams = User::get();
 
@@ -55,7 +54,6 @@ class GameContainer extends Component
         return view('livewire.game-container')
             ->withQuestion($currentQuestion)
             ->withAnsweredCurrentQuestion($answeredCurrentQuestion)
-            ->withStage($stage)
             ->withRound($round)
             ->withPlayerScore($playerScore)
             ->withTeams($teams)
