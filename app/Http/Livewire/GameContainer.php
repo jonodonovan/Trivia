@@ -40,7 +40,7 @@ class GameContainer extends Component
                 ->get();
 
             foreach ($allCorrectAnsweredQuestions as $answer) {
-                $playerScore += $answer->wager;
+                $playerScore += $answer->wager + $answer->bonus;
             };
         }
 
