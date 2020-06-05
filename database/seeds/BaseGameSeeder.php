@@ -71,6 +71,12 @@ class BaseGameSeeder extends Seeder
 
         DB::table('wagers')->insert([
             'stage_id' => '2',
+            'value' => '3',
+            'active' => '0',
+        ]);
+
+        DB::table('wagers')->insert([
+            'stage_id' => '2',
             'value' => '5',
             'active' => '0',
         ]);
@@ -78,12 +84,6 @@ class BaseGameSeeder extends Seeder
         DB::table('wagers')->insert([
             'stage_id' => '2',
             'value' => '7',
-            'active' => '0',
-        ]);
-
-        DB::table('wagers')->insert([
-            'stage_id' => '2',
-            'value' => '9',
             'active' => '0',
         ]);
 

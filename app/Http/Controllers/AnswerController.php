@@ -15,7 +15,6 @@ class AnswerController extends Controller
         if ($request->type == 1) {
 
             $this->validate($request, array(
-                'stage' => 'required',
                 'round' => 'required',
                 'question' => 'required',
                 'answer' => 'required',
@@ -29,10 +28,10 @@ class AnswerController extends Controller
 
             switch ($checkAnswers) {
                 case 0:
-                    $answer->bonus = 5;
+                    $answer->bonus = 3;
                 break;
                 case 1:
-                    $answer->bonus = 3;
+                    $answer->bonus = 2;
                 break;
                 case 2:
                     $answer->bonus = 1;
@@ -42,7 +41,6 @@ class AnswerController extends Controller
             }
 
             $answer->user_id = Auth::user()->id;
-            $answer->stage_id = $request->stage;
             $answer->round = $request->round;
             $answer->question_id = $request->question;
             $answer->answer = $request->answer;
@@ -52,7 +50,6 @@ class AnswerController extends Controller
         } elseif ($request->type == 2) {
 
             $this->validate($request, array(
-                'stage' => 'required',
                 'round' => 'required',
                 'question' => 'required',
                 'answer' => 'required',
@@ -60,7 +57,6 @@ class AnswerController extends Controller
 
             $answer = new Answer;
             $answer->user_id = Auth::user()->id;
-            $answer->stage_id = $request->stage;
             $answer->round = $request->round;
             $answer->question_id = $request->question;
             $answer->answer = $request->answer;
@@ -70,7 +66,6 @@ class AnswerController extends Controller
         } else {
 
             $this->validate($request, array(
-                'stage' => 'required',
                 'round' => 'required',
                 'question' => 'required',
                 'answer' => 'required',
@@ -79,7 +74,6 @@ class AnswerController extends Controller
 
             $answer = new Answer;
             $answer->user_id = Auth::user()->id;
-            $answer->stage_id = $request->stage;
             $answer->round = $request->round;
             $answer->question_id = $request->question;
             $answer->answer = $request->answer;
