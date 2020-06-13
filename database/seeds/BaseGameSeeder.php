@@ -123,6 +123,50 @@ class BaseGameSeeder extends Seeder
             'name' => 'Meta',
         ]);
 
+        DB::table('categories')->insert([
+            'name' => 'Food',
+        ]);
+
+        DB::table('categories')->insert([
+            'name' => 'Art',
+        ]);
+
+        DB::table('categories')->insert([
+            'name' => 'Cooking',
+        ]);
+
+        DB::table('categories')->insert([
+            'name' => 'Books',
+        ]);
+
+        DB::table('categories')->insert([
+            'name' => 'Advertising',
+        ]);
+
+        DB::table('categories')->insert([
+            'name' => 'Biology',
+        ]);
+
+        DB::table('categories')->insert([
+            'name' => 'Baseball',
+        ]);
+
+        DB::table('categories')->insert([
+            'name' => 'Business',
+        ]);
+
+        DB::table('categories')->insert([
+            'name' => 'Bacteria',
+        ]);
+
+        DB::table('categories')->insert([
+            'name' => 'Music',
+        ]);
+
+        DB::table('categories')->insert([
+            'name' => 'Astrology',
+        ]);
+
         DB::table('questions')->insert([
             'round_id' => '1',
             'category_id' => '1',
