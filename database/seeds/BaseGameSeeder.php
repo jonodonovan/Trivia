@@ -51,6 +51,16 @@ class BaseGameSeeder extends Seeder
             'active' => '0',
         ]);
 
+        DB::table('rounds')->insert([
+            'count' => '7',
+            'active' => '0',
+        ]);
+
+        DB::table('rounds')->insert([
+            'count' => '8',
+            'active' => '0',
+        ]);
+
         DB::table('wagers')->insert([
             'stage_id' => '1',
             'value' => '1',
@@ -165,6 +175,14 @@ class BaseGameSeeder extends Seeder
 
         DB::table('categories')->insert([
             'name' => 'Astrology',
+        ]);
+
+        DB::table('categories')->insert([
+            'name' => 'Television',
+        ]);
+
+        DB::table('categories')->insert([
+            'name' => 'Movies',
         ]);
 
         DB::table('questions')->insert([
