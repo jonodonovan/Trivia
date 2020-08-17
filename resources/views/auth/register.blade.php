@@ -4,9 +4,7 @@
 <div class="container h-100">
     <div class="row align-items-center h-50">
         <div class="col-10 mx-auto">
-            <div class="card">
-                <div class="card-header">{{ __('Join a Game') }}</div>
-
+            <div class="card" style="background: none;border:none;">
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
@@ -42,7 +40,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Let\'s go') }}
+                                    {{ __('Let\'s go!') }}
                                 </button>
                             </div>
                         </div>

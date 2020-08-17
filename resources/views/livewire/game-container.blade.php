@@ -162,7 +162,7 @@
                         </span>
                     </p>
                 </div>
-                <div class="card-body" style="background-color: #ffffff;">
+                <div class="card-body" style="height:60vh;overflow:hidden; overflow-y:scroll;background-color: #ffffff;">
 
                 @foreach ($teams as $team)
 

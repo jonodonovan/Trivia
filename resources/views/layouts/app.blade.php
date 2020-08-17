@@ -16,7 +16,7 @@
             font-weight: 200;
             height: 100vh;
             margin: 0;
-            background-image: url("/images/background.png");
+            background-image: url("/images/background.jpg");
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
