@@ -81,6 +81,6 @@ class AnswerController extends Controller
             $answer->save();
         }
 
-        return redirect()->route('home');
+        return redirect()->route('game');
     }
 }

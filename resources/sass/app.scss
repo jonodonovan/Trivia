@@ -4,8 +4,10 @@
 // Variables
 @import 'variables';
 
-
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+@import 'layout';
+@import 'game';
+@import 'admin';
 @import 'overrides';

@@ -1,0 +1,42 @@
+.game-column {
+	margin-top:30px;
+}
+.card {
+	background-color:transparent;
+}
+.card-header {
+	color:#000;
+	background:rgba(255, 255, 255, .6);
+}
+.card-body {
+	background: #ffffff;
+}
+.game-body-row {
+	margin:30px 0px 5px;
+}
+.game-body-column {
+	padding:0px;
+}
+.game-question-h1 {
+	margin-bottom:40px;
+}
+.game-question-image {
+	margin-bottom:20px;
+}
+.game-score-column {
+	margin-top:30px;
+}
+.game-score-card {
+	background-color: transparent;
+}
+.game-score-card-header {
+	background: rgba(255, 255, 255, .6);
+	color: #000;
+	margin-bottom:0px;
+}
+.game-score-card-body {
+	height:60vh;
+	overflow:hidden;
+	overflow-y:scroll;
+	background-color: #ffffff;
+}

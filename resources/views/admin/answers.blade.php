@@ -3,16 +3,16 @@
 @section('content')
 <div class="container">
 	<div class="row">
-		<div class="col-md-12" style="margin-top:30px;">
-			<div class="card" style="background-color:transparent;">
-                <div class="card-header" style="color:#000;background:rgba(255, 255, 255, .6)">
-					<p>{{ $round->active }} | {{ $question->id }} | {{ $answers->count() }}</p>
+		<div class="col-md-12 admin-column">
+			<div class="card admin-card">
+                <div class="card-header admin-card-header">
+					<p>Round: {{ $round->active }} | Question: {{ $question->id }} | Number of Answers: {{ $answers->count() }}</p>
                 </div>
-				<div class="card-body" style="background: #ffffff;">
+				<div class="card-body admin-card-body">
 					<form method="POST" action="{{route('correctAnswers', $question)}}">
 						{{method_field('PATCH')}}
 						@csrf
-					<table class="table table-bordered" style="margin:40px 0px;">
+					<table class="table table-bordered admin-table">
 						<thead>
 						   <tr>
 							  <th style="width:15%">Player</th>

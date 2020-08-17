@@ -3,12 +3,12 @@
 @section('content')
 <div class="container">
 	<div class="row">
-		<div class="offset-md-2 col-md-10" style="margin-top:30px;">
-			<div class="card" style="background-color:transparent;">
-                <div class="card-header" style="color:#000;background:rgba(255, 255, 255, .6)">
+		<div class="offset-md-1 col-md-10 admin-column">
+			<div class="card admin-card">
+                <div class="card-header admin-card-header">
 					<h1>Game Players</h1>
                 </div>
-				<div class="card-body" style="background: #ffffff;">
+				<div class="card-body admin-card-body">
 					<ul>
 
 					@foreach ($users as $user)
