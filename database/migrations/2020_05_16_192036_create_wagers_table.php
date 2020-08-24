@@ -15,10 +15,8 @@ class CreateWagersTable extends Migration
     {
         Schema::create('wagers', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('stage_id');
-            $table->foreign('stage_id')->references('id')->on('stages')->onDelete('cascade');
+            $table->unsignedBigInteger('group');
             $table->integer('value');
-            $table->boolean('active')->default(0);
             $table->timestamps();
         });
     }

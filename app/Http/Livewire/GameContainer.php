@@ -21,12 +21,6 @@ class GameContainer extends Component
         $playerScore = 0;
 
         if ($currentQuestion) {
-            $round = Round::where('id', '=', $currentQuestion->round_id)->first();
-        } else {
-            $round = Round::where('active', '=', TRUE)->first();
-        }
-
-        if ($currentQuestion) {
             $answeredCurrentQuestion = Answer::where('user_id', '=', Auth::user()->id)
                 ->where('question_id', '=', $currentQuestion->id)
                 ->first();
@@ -36,7 +30,7 @@ class GameContainer extends Component
                 ->get();
 
             $allAnsweredQuestions = Answer::where('user_id', '=', Auth::user()->id)
-                ->where('round', '=', $round->count)
+                ->where('round', '=', $currentQuestion->round)
                 ->get();
 
             foreach ($allCorrectAnsweredQuestions as $answer) {
@@ -44,7 +38,7 @@ class GameContainer extends Component
             };
         }
 
-        $wagers = Wager::where('active', '=', TRUE)->get();
+        $wagers = Wager::where('group', $currentQuestion->wager_group)->get();
         $teams = User::get();
 
         $teams = $teams->sortByDesc(function ($team) {
@@ -54,7 +48,6 @@ class GameContainer extends Component
         return view('livewire.game-container')
             ->withQuestion($currentQuestion)
             ->withAnsweredCurrentQuestion($answeredCurrentQuestion)
-            ->withRound($round)
             ->withPlayerScore($playerScore)
             ->withTeams($teams)
             ->withAllAnsweredQuestions($allAnsweredQuestions)

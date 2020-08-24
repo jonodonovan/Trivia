@@ -29,24 +29,34 @@ html, body {
 #id {
 	height: 100%;
 }
-.loading:after {
-	overflow: hidden;
-	display: inline-block;
-	vertical-align: bottom;
-	-webkit-animation: ellipsis steps(4,end) 6000ms infinite;
-	animation: ellipsis steps(4,end) 6000ms infinite;
-	content: "\2026"; /* ascii code for the ellipsis character */
-	width: 0px;
+.image-loading {
+    width: 28px;
+    -webkit-animation:spin 10s linear infinite;
+    -moz-animation:spin 10s linear infinite;
+    animation:spin 10s linear infinite;
 }
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 
-@keyframes ellipsis {
-	to {
-		width: 1.25em;
-	}
-}
+// .loading:after {
+// 	overflow: hidden;
+// 	display: inline-block;
+// 	vertical-align: bottom;
+// 	-webkit-animation: ellipsis steps(4,end) 6000ms infinite;
+// 	animation: ellipsis steps(4,end) 6000ms infinite;
+// 	content: "\2026"; /* ascii code for the ellipsis character */
+// 	width: 0px;
+// }
 
-@-webkit-keyframes ellipsis {
-	to {
-		width: 1.25em;
-	}
-}
+// @keyframes ellipsis {
+// 	to {
+// 		width: 1.25em;
+// 	}
+// }
+
+// @-webkit-keyframes ellipsis {
+// 	to {
+// 		width: 1.25em;
+// 	}
+// }

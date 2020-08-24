@@ -13,90 +13,34 @@ class BaseGameSeeder extends Seeder
     {
         factory('App\User', 5)->create();
 
-        DB::table('stages')->insert([
-            'name' => '1',
-            'active' => '1',
-        ]);
-
-        DB::table('stages')->insert([
-            'name' => '2',
-            'active' => '0',
-        ]);
-
-        DB::table('rounds')->insert([
-            'count' => '1',
-            'active' => '1',
-        ]);
-
-        DB::table('rounds')->insert([
-            'count' => '2',
-            'active' => '0',
-        ]);
-
-        DB::table('rounds')->insert([
-            'count' => '3',
-            'active' => '0',
-        ]);
-
-        DB::table('rounds')->insert([
-            'count' => '4',
-            'active' => '0',
-        ]);
-
-        DB::table('rounds')->insert([
-            'count' => '5',
-            'active' => '0',
-        ]);
-
-        DB::table('rounds')->insert([
-            'count' => '6',
-            'active' => '0',
-        ]);
-
-        DB::table('rounds')->insert([
-            'count' => '7',
-            'active' => '0',
-        ]);
-
-        DB::table('rounds')->insert([
-            'count' => '8',
-            'active' => '0',
-        ]);
-
         DB::table('wagers')->insert([
-            'stage_id' => '1',
+            'group' => '1',
             'value' => '1',
-            'active' => '1',
         ]);
 
         DB::table('wagers')->insert([
-            'stage_id' => '1',
+            'group' => '1',
             'value' => '3',
-            'active' => '1',
         ]);
 
         DB::table('wagers')->insert([
-            'stage_id' => '1',
+            'group' => '1',
             'value' => '5',
-            'active' => '1',
         ]);
 
         DB::table('wagers')->insert([
-            'stage_id' => '2',
+            'group' => '2',
             'value' => '3',
-            'active' => '0',
         ]);
 
         DB::table('wagers')->insert([
-            'stage_id' => '2',
+            'group' => '2',
             'value' => '5',
-            'active' => '0',
         ]);
 
         DB::table('wagers')->insert([
-            'stage_id' => '2',
+            'group' => '2',
             'value' => '7',
-            'active' => '0',
         ]);
 
         DB::table('categories')->insert([
@@ -188,8 +132,9 @@ class BaseGameSeeder extends Seeder
         ]);
 
 		DB::table('questions')->insert([
-            'round_id' => '1',
-            'category_id' => '1',
+            'round' => '1',
+			'category_id' => '1',
+			'wager_group' => '1',
             'text' => 'What\'s the meaning of life?',
             'answer' => 'the condition that distinguishes animals and plants from inorganic matter, including the capacity for growth, reproduction, functional activity, and continual change preceding death or 42',
             'active' => '0',
@@ -197,8 +142,9 @@ class BaseGameSeeder extends Seeder
         ]);
 
         DB::table('questions')->insert([
-            'round_id' => '1',
-            'category_id' => '2',
+            'round' => '1',
+			'category_id' => '2',
+			'wager_group' => '1',
             'text' => 'Name three different fruit trees.',
             'answer' => 'An orange, apple, banana tree',
             'active' => '0',
@@ -206,8 +152,9 @@ class BaseGameSeeder extends Seeder
         ]);
 
         DB::table('questions')->insert([
-            'round_id' => '1',
-            'category_id' => '3',
+            'round' => '1',
+			'category_id' => '3',
+			'wager_group' => '1',
             'text' => 'How many grains of sand are there in a cup?',
             'answer' => '2 million grains',
             'active' => '0',
@@ -216,8 +163,9 @@ class BaseGameSeeder extends Seeder
         ]);
 
         DB::table('questions')->insert([
-            'round_id' => '2',
-            'category_id' => '1',
+            'round' => '2',
+			'category_id' => '1',
+			'wager_group' => '2',
             'text' => 'What\'s the meaning of life?',
             'answer' => 'the condition that distinguishes animals and plants from inorganic matter, including the capacity for growth, reproduction, functional activity, and continual change preceding death or 42',
             'active' => '0',
@@ -225,8 +173,9 @@ class BaseGameSeeder extends Seeder
         ]);
 
         DB::table('questions')->insert([
-            'round_id' => '2',
-            'category_id' => '2',
+            'round' => '2',
+			'category_id' => '2',
+			'wager_group' => '2',
             'text' => 'Name three different fruit trees.',
             'answer' => 'An orange, apple, banana tree',
             'active' => '0',
@@ -234,8 +183,9 @@ class BaseGameSeeder extends Seeder
         ]);
 
         DB::table('questions')->insert([
-            'round_id' => '2',
-            'category_id' => '3',
+            'round' => '2',
+			'category_id' => '3',
+			'wager_group' => '2',
             'text' => 'How many grains of sand are there in a cup?',
             'answer' => '2 million grains',
             'active' => '0',

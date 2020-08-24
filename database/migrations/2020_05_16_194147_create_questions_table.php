@@ -15,10 +15,10 @@ class CreateQuestionsTable extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('round_id');
-            $table->foreign('round_id')->references('id')->on('rounds');
+            $table->unsignedBigInteger('round');
             $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('categories');
+			$table->foreign('category_id')->references('id')->on('categories');
+			$table->unsignedBigInteger('wager_group');
             $table->string('text');
             $table->string('answer');
             $table->boolean('active')->default(0);

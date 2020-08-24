@@ -1,7 +1,7 @@
-<div class="container" wire:poll>
+<div class="container">
     <div class="row">
         <div class="col-sm-12 col-lg-9 game-column">
-            <div class="card">
+            <div class="card" wire:poll>
                 <div class="card-header">
                     <span class="float-left">
                         Your Score: {{ number_format($playerScore) }}
@@ -11,7 +11,7 @@
                     @if ($question)
 
                         <span>Category: {{ $question->category->name }}</span><br>
-                        <span>Round: {{ $round->count }} | Question: {{ $question->id }}</span>
+                        <span>Round: {{ $question->round }} | Question: {{ $question->id }}</span>
 
                     @endif
 
@@ -23,14 +23,16 @@
 
                         @if (!$question)
 
-                            <h3 class="loading">You're in the waiting room</h3>
+							<h3>You're in the waiting room</h3>
+							<img class="image-loading" src="../images/favicon.ico" alt="">
 
                         @endif
 
                         @if ($answeredCurrentQuestion)
 
                             <h3><span class="badge badge-success">Question {{ $question->id }} answered!</h3>
-                            <div class="loading">Waiting for other players to answer</div>
+							<p>Waiting for other players to answer</p>
+							<img class="image-loading" src="../images/favicon.ico" alt="">
 
                         @else
 
@@ -48,7 +50,7 @@
 
                                 <form method="POST" action="{{ route('answer.store') }}">
                                     @csrf
-                                    <input type="hidden" name="round" value="{{ $round->count }}">
+                                    <input type="hidden" name="round" value="{{ $question->round }}">
                                     <input type="hidden" name="question" value="{{ $question->id }}">
                                     <input type="hidden" name="type" value="{{ $question->type }}">
 
@@ -104,7 +106,7 @@
                                     <div class="form-group row">
                                         <div class="col-md-12">
                                             <label for="wager">Your wager (0-15)</label>
-                                            <input type="text" class="form-control{{ $errors->has('wager') ? ' is-invalid' : '' }}" name="wager" id="wager" value="{{ old('wager') }}" placeholder="0-15" required>
+                                            <input type="number" class="form-control{{ $errors->has('wager') ? ' is-invalid' : '' }}" name="wager" id="wager" value="{{ old('wager') }}" placeholder="0-15" required min="0" max="15">
 
                                             @if ($errors->has('wager'))
                                                 <span class="invalid-feedback">
@@ -138,13 +140,13 @@
 						<path fill-rule="evenodd" d="M8 15A7 7 0 108 1a7 7 0 000 14zm0 1A8 8 0 108 0a8 8 0 000 16z" clip-rule="evenodd"/>
 						<path d="M8.93 6.588l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588z"/>
 						<circle cx="8" cy="4.5" r="1"/>
-					  </svg> You can only use one wager option per round. Each round is three questions.</i>
+					  </svg> You can only use one of your three wager options per round. If you feel more confident in your answer, select a higher wager. Each round is three questions. Wagers are reset each round. Speed counts, the first three players to submit an answer can earn bonus points if correct.</i>
 				</div>
             </div>
         </div>
 
         <div class="col-sm-12 col-lg-3 game-score-column">
-            <div class="card game-score-card">
+            <div class="card game-score-card" wire:poll>
                 <div class="card-header game-score-card-header">
                     <p>Player / Score</p>
                 </div>

@@ -22,5 +22,6 @@ Route::prefix('admin')->middleware(['auth', 'is_admin'])->group(function () {
 	Route::get('players', 'AdminController@players')->name('admin.players');
 	Route::get('delete/{slug}', 'AdminController@deletePlayer')->name('admin.deleteplayer');
     Route::get('round/{round}/question/{question}', 'AdminController@answers');
-    Route::patch('correctAnswers/{slug}', 'AdminController@correctAnswers')->name('correctAnswers');
+	Route::patch('correctAnswers/{slug}', 'AdminController@correctAnswers')->name('correctAnswers');
+	Route::post('activateQuestion', 'AdminController@activateQuestion')->name('activateQuestion');
 });

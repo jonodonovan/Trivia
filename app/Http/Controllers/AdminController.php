@@ -14,7 +14,7 @@ class AdminController extends Controller
     public function index()
     {
 		$users = User::get();
-		$questions = Question::orderBy('round_id')->get();
+		$questions = Question::orderBy('round')->get();
 		return view('admin.home')
 					->withUsers($users)
 					->withQuestions($questions);
@@ -36,10 +36,9 @@ class AdminController extends Controller
     public function answers($round, $question)
     {
         $users = User::get();
-        $round = Round::where('id', $round)->firstOrFail();
-        $question = Question::where('id', $question)->firstOrFail();
+		$question = Question::where('id', $question)->firstOrFail();
         $answers = Answer::where('question_id', $question->id)->get();
-        return view('admin.answers')->withUsers($users)->withRound($round)->withQuestion($question)->withAnswers($answers);
+        return view('admin.answers')->withUsers($users)->withQuestion($question)->withAnswers($answers);
     }
 
     public function correctAnswers(Request $request, $slug)
@@ -48,9 +47,34 @@ class AdminController extends Controller
 
         foreach($correctAnswers as $correctAnswer => $value) {
             $answer = Answer::where('question_id', $slug)->where('user_id', $correctAnswer)->firstOrFail();
-            $answer->correct = TRUE;
+
+			if ($value == '0') {
+				$answer->correct = FALSE;
+			} else {
+				$answer->correct = TRUE;
+			}
+
             $answer->save();
         }
+
+        return redirect()->route('admin.home');
+	}
+
+	public function activateQuestion(Request $request)
+    {
+        $this->validate($request, array(
+            'question'	=> ['required', 'exists:questions,id'],
+		));
+
+		// find current active question and mark not active
+		$currentquestion = Question::where('active', TRUE)->firstOrFail();
+		$currentquestion->active = FALSE;
+		$currentquestion->save();
+
+		// find this question
+		$question = Question::where('id', $request->question)->firstOrFail();
+		$question->active = TRUE;
+		$question->save();
 
         return redirect()->route('admin.home');
     }

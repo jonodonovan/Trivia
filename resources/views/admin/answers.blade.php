@@ -4,9 +4,9 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-12 admin-column">
-			<div class="card admin-card">
+			<div class="card admin-card" wire:poll>
                 <div class="card-header admin-card-header">
-					<p>Round: {{ $round->active }} | Question: {{ $question->id }} | Number of Answers: {{ $answers->count() }}</p>
+					<p>Round: {{ $question->round }} | Question: {{ $question->id }} | Number of Answers: {{ $answers->count() }} of {{ $users->count() }}</p>
                 </div>
 				<div class="card-body admin-card-body">
 					<form method="POST" action="{{route('correctAnswers', $question)}}">
@@ -22,7 +22,35 @@
 						</thead>
 						<tbody>
 
-							@foreach($users as $user)
+							@foreach ($answers as $answer)
+								<tr>
+									<td>{{ $answer->user->id }}</td>
+									<td>{{ $answer->answer }}</td>
+
+									@if ($answer->correct)
+
+									<td>
+										<div class="form-check">
+											<input type="hidden" name="correctAnswer[{{ $answer->user_id }}]" value="0">
+											<input type="checkbox" class="form-check-input" name="correctAnswer[{{ $answer->user_id }}]" checked>
+										</div>
+									</td>
+
+									@else
+
+									<td>
+										<div class="form-check">
+											<input type="hidden" name="correctAnswer[{{ $answer->user_id }}]" value="0">
+											<input type="checkbox" class="form-check-input" name="correctAnswer[{{ $answer->user_id }}]">
+										</div>
+									</td>
+
+									@endif
+
+								</tr>
+							@endforeach
+
+							{{-- @foreach($users as $user)
 
 								<tr>
 									<td>{{ $user->name }}</td>
@@ -49,7 +77,7 @@
 
 							  </tr>
 
-						   @endforeach
+						   @endforeach --}}
 
 						</tbody>
 					</table>
