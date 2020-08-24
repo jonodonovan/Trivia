@@ -3,9 +3,9 @@
 @section('content')
 <div class="container h-100">
     <div class="row align-items-center h-50">
-        <div class="col-10 mx-auto">
+        <div class="col-8 mx-auto">
             <div class="card" style="background: none;border:none;">
-                <div class="card-body">
+                <div class="card-body" style="background: rgba(255, 255, 255, .6);border-radius:10px;">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
