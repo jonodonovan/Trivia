@@ -31,14 +31,18 @@ class GameContainer extends Component
 
             $allAnsweredQuestions = Answer::where('user_id', '=', Auth::user()->id)
                 ->where('round', '=', $currentQuestion->round)
-                ->get();
+				->get();
+
+			$wagers = Wager::where('group', $currentQuestion->wager_group)->get();
 
             foreach ($allCorrectAnsweredQuestions as $answer) {
                 $playerScore += $answer->wager + $answer->bonus;
             };
-        }
+		} else {
 
-        $wagers = Wager::where('group', $currentQuestion->wager_group)->get();
+			$wagers = NULL;
+		}
+
         $teams = User::get();
 
         $teams = $teams->sortByDesc(function ($team) {

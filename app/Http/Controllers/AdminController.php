@@ -67,9 +67,12 @@ class AdminController extends Controller
 		));
 
 		// find current active question and mark not active
-		$currentquestion = Question::where('active', TRUE)->firstOrFail();
-		$currentquestion->active = FALSE;
-		$currentquestion->save();
+		$currentquestion = Question::where('active', TRUE)->first();
+
+		if ($currentquestion) {
+			$currentquestion->active = FALSE;
+			$currentquestion->save();
+		}
 
 		// find this question
 		$question = Question::where('id', $request->question)->firstOrFail();
