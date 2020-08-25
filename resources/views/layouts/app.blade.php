@@ -19,6 +19,9 @@
 </head>
 <body>
 	<div class="bg"></div>
+	<div class="ie alert alert-danger" role="alert">
+		<strong>Oh snap!</strong> IE is not a supported browser. Please use desktop or mobile versions of Chrome, Edge, Safari, or Firefox.
+	  </div>
     @yield('content')
     @include('layouts.partials.footer')
     <livewire:scripts>
